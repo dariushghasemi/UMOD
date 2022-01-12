@@ -25,13 +25,13 @@ pander(summary(UMOD), style = "rmarkdown", split.tables = 120)
 
 Check the contingacy table:
 
-```
+```{r}
 tab <- as.matrix(prop.table(table(UMOD$DS_Level, UMOD$Age_cat), margin = 2))
 tab[2,]
 tab[2,]/2 + tab[3,]
 
 ```
 
-```
+```{r}
 plot(tab[2,]/2 + tab[3,])
 ```
