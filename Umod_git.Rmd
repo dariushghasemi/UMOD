@@ -1,0 +1,37 @@
+# UMOD
+
+---
+title: "UroModelin"
+author: "Dariush"
+date: "1/11/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+In this exercise we try to check the distribution of UroMod SNP 
+by different AGE group in CHRIS Study participants!
+
+First we grepped SNPs genotype data from the latest VCF file imputed by TOPMedR2.
+One more time!
+
+
+```{r}
+library(pander)
+pander(summary(UMOD), style = "rmarkdown", split.tables = 120)
+```
+
+Check the contingacy table:
+
+```
+tab <- as.matrix(prop.table(table(UMOD$DS_Level, UMOD$Age_cat), margin = 2))
+tab[2,]
+tab[2,]/2 + tab[3,]
+
+```
+
+```
+plot(tab[2,]/2 + tab[3,])
+```
