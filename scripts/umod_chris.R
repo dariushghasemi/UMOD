@@ -4,15 +4,17 @@
 
 
 # inputs
-path_umod_chris <- "/scratch/dariush.ghasemi/projects/UMOD/data/chr16-20348509-rs13335818.txt"
+path_umod_chris <- "/scratch/dariush.ghasemi/projects/UMOD/data/chr16_20381010_rs77924615.txt"
 path_clinicals <- "~/projects/shroom3/data/chris_q-norm.csv"
+
 
 # outputs
 
 
 #----------------------#
 # read dosage of UMOD in CHRIS
-umod_dosage <- read.delim(path_umod_chris, sep = "\t", stringsAsFactors = FALSE)
+headers <- c("AID", "ID", "DS")
+umod_dosage <- read.delim(path_umod_chris, sep = "\t", col.names = headers, stringsAsFactors = FALSE)
 
 # load chris phenotypes
 chris <- read.csv(path_clinicals, stringsAsFactors = FALSE)
