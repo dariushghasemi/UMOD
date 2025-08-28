@@ -19,7 +19,7 @@ snps=/scratch/dariush.ghasemi/projects/UMOD/data/umod_hg38.snps
 
 # path to output
 ofile=/scratch/dariush.ghasemi/projects/UMOD/data/umod_hg38.dosage
-
+snps_info=/scratch/dariush.ghasemi/projects/UMOD/data/umod_hg38.snpinfo
 
 # load libraries on server
 source /exchange/healthds/singularity_functions
@@ -29,3 +29,6 @@ bcftools query -f '[%SAMPLE\t%ID\t%DS\n]' $genotype -R $snps -o $ofile
 
 # for full characteristics of the variant, use below term for the query
 #-f '[%SAMPLE\t%CHROM\t%POS\t%ID\t%REF\t%ALT\t%QUAL\t%FILTER\t%GT\t%DS\t%HDS\t%GP\n]'
+
+# Extract variants info
+bcftools query -f '%CHROM\t%POS\t%ID\t%REF\t%ALT\t%AF\n' $genotype -R $snps -o $snps_info
